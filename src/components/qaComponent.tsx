@@ -7,11 +7,12 @@ interface Props {
 	counter: number
 	isAnswer: boolean
 	author: string
+	timestamp: string
 }
 
 export default class QAComponent extends React.Component<Props, {}> {
 	render() {
-		const {message, counter, isAnswer, author} = this.props;
+		const {message, counter, isAnswer, author, timestamp} = this.props;
 		const padding = isAnswer ? 'padding' : 'noSidePadding'
 		const statedBy = isAnswer ? 'answered by' : 'asked by'
 		return (
@@ -28,7 +29,7 @@ export default class QAComponent extends React.Component<Props, {}> {
 						</div>
 						<div className={'author'}>
 							<div><span>{statedBy}</span> {author}</div>
-							<span>{new Date().toDateString()}</span>
+							<span>{timestamp}</span>
 						</div>
 					</div>
 					<div className={'separator'}/>

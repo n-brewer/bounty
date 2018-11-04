@@ -1,14 +1,11 @@
 import * as React from 'react';
 import '../css/App.css';
-import QAComponent from './qaComponent';
 import Question from './question';
+import QuestionCell from './questionCell';
 import Searchbar from './searchbar';
 import ToolBarOpts from './toolbarOpts'
 
 const logo = require('../images/coin-stack.png');
-
-const tags = ['code', 'swift', 'arrays', 'polymorphism']
-const answers = ['impossible', 'probably should try harder', 'probably should try harderprobably should try harderprobably should try harderprobably should try harderprobably should try harder']
 
 enum Route {
 	home,
@@ -17,33 +14,32 @@ enum Route {
 
 type State = {
 	selection: Route
+	selectedQuestion?: any
 }
 
 class App extends React.Component<{}, State> {
 	constructor(props: any) {
 		super(props)
-		this.state = {selection: Route.home}
+		this.state = {selection: Route.home, selectedQuestion: null}
 	}
 
 	current = (selection: Route) => {
 		switch (selection) {
 			case Route.question: {
+				const q = this.state.selectedQuestion
 				return (
 					<div>
-						<Question
-							data={'How do you make an array that when it only has one item left it just becomes a string?'}
-							counter={2} tags={tags}/>
-						<div className={'answers'}>
-							{answers.map(a => {
-								return (<QAComponent key={a} counter={0} message={a} isAnswer={true} author={'SuperCoder'}/>)
-							})}
-						</div>
+						<Question question={q}/>
 					</div>
 				)
 			}
 			case Route.home: {
-				return  (
-					<div onClick={() => this.setState({selection: Route.question})}>This will be a question to pick</div>
+				return (
+					<div style={{width: '100%'}} onClick={() => this.setState({selection: Route.question})}>
+						{QuestionList.map(q => {
+							return (<QuestionCell key={q._id} question={q} selected={(q) => this.setState({selection: Route.question, selectedQuestion: q})}/>)
+						})}
+					</div>
 				)
 			}
 		}
@@ -62,8 +58,10 @@ class App extends React.Component<{}, State> {
 				<div className='container toolbar'>
 					<div className={'wrapper'}>
 						<ToolBarOpts data={'Home'} selected={() => this.setState({selection: Route.home})}/>
-						<ToolBarOpts data={'All'} selected={() => {}}/>
-						<ToolBarOpts data={'Unanswered'} selected={() => {}}/>
+						<ToolBarOpts data={'All'} selected={() => {
+						}}/>
+						<ToolBarOpts data={'Unanswered'} selected={() => {
+						}}/>
 						<Searchbar data={'Search Bounties'}/>
 						<button className={'bounty-btn'}>Post Bounty</button>
 					</div>
@@ -79,3 +77,35 @@ class App extends React.Component<{}, State> {
 }
 
 export default App;
+
+export const AnswerList = [{
+	_id: 'firstAnswer1',
+	answer: 'You would have two variables increment, the first at 1 index, the second at 2 indexes. Once the second variable would become nil, the first variable would be in the center of the array. Hope that helps!',
+	timestamp: '10/24/18',
+	votes: 2,
+	answeredBy: 'CoolCoder'
+}]
+
+export const QuestionList = [{
+	_id: 'firstId1',
+	question: 'Get middle index of an array?',
+	explanation: 'How can I find the middle index of an array with an unknown length with only one iteration?',
+	tags: ['code', 'swift', 'arrays'],
+	timestamp: '10/22/18',
+	bounty: 100,
+	votes: 0,
+	answers: AnswerList,
+	askedBy: 'CuriousCoder'
+}, {
+	_id: 'Id2',
+	question: 'Reverse a string',
+	explanation: 'How do you reverse a string in C++',
+	tags: ['code', 'C++', 'strings'],
+	timestamp: '10/18/18',
+	bounty: 50,
+	votes: 1,
+	answers: AnswerList,
+	askedBy: 'CuriousCoder'
+}]
+
+
