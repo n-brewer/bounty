@@ -1,0 +1,81 @@
+.App {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+}
+
+.container {
+  justify-content: center;
+  display: flex;
+  width: 100%;
+}
+
+.wrapper {
+  font-family: 'PT Sans', Arial, sans-serif;
+  align-items: center;
+  display: flex;
+  width: 960px;
+}
+
+.header {
+  height: 75px;
+  background-color: white;
+}
+
+.toolbar {
+  height: 55px;
+  background-color: #1B4696;
+}
+
+.bounty-btn {
+  font-family: 'PT Sans', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 41px;
+  width: 200px;
+  color: white;
+  background-color: #51bb7b;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.bounty-btn:hover {
+  cursor: pointer;
+  background-color: #33A561;
+}
+
+.bounty-btn:focus {
+  outline: 0;
+  box-shadow: inset -1px 0 #409461;
+}
+
+.site-logo {
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+.site-name {
+  font-family: 'PT Sans', Arial, sans-serif;
+  color: #484848;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.body-details {
+  background-color: #F4F4F4;
+  height: 100%;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  width: 100%;
+}
+
+
+

@@ -1,0 +1,15 @@
+
+.main {
+  width: 130px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.title {
+  color: white;
+  cursor: pointer;
+}
+
+.title:hover {
+  color: lightblue;
+}

@@ -1,0 +1,51 @@
+.qa-body {
+    text-align: left;
+    display: flex;
+    width: 100%;
+}
+
+.counter {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.counter span {
+    font-family: 'PT Sans', Arial, sans-serif;
+    font-size: 24px;
+}
+
+.message {
+    flex-basis: 80%;
+}
+
+.padding {
+    padding: 10px 30px;
+}
+
+.noSidePadding {
+    padding: 10px 0;
+}
+
+.details {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.author {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    flex-basis: 20%;
+}
+
+.author span {
+    font-size: 14;
+    color: #676767;
+}
+
+.separator {
+    height: 1px;
+    background-color: lightgray;
+    margin-top: 10px;
+}
