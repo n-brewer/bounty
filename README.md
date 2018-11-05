@@ -649,7 +649,7 @@ Before getting started, you must define each type of asset as a valid module for
 
 >Cannot find module './logo.png'.
 
-To import asset files in TypeScript, create a new type definition file in your project, and name it something like `assets.d.ts`. Then, add a line for each type of asset that you need to import:
+To import asset files in TypeScript, create a new type definition file in your project, and name it something like `assetsdeclaration.d.ts`. Then, add a line for each type of asset that you need to import:
 
 ```ts
 declare module "*.gif";

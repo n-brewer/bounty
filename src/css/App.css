@@ -38,6 +38,7 @@
   background-color: #51bb7b;
   border-radius: 3px;
   padding: 5px;
+  box-shadow: inset -1px -1px 0 #409461;
 }
 
 .bounty-btn:hover {
@@ -47,7 +48,6 @@
 
 .bounty-btn:focus {
   outline: 0;
-  box-shadow: inset -1px 0 #409461;
 }
 
 .site-logo {
