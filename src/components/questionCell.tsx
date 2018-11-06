@@ -8,6 +8,7 @@ interface Props {
 }
 
 export default class QuestionCell extends React.Component<Props, {}> {
+
 	render() {
 		const {question, selected} = this.props;
 		return (
