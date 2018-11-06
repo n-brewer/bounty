@@ -4,15 +4,12 @@ import '../css/qaComponent.css';
 import CodeBlock from './codeBlock'
 
 interface Props {
-	message: string
-	counter: number
+	qa: any
 	isAnswer: boolean
-	author: string
-	timestamp: string
 }
 
 type State = {
-	t: string
+	txt: string
 	isCommenting: boolean
 }
 
@@ -20,32 +17,31 @@ export default class QAComponent extends React.Component<Props, State> {
 
 	constructor(props: Props) {
 		super(props)
-		this.state = {t: '', isCommenting: false}
+		this.state = {txt: '', isCommenting: false}
 	}
 
 	render() {
-		const {message, counter, isAnswer, author, timestamp} = this.props;
+		const {qa, isAnswer} = this.props;
 		const padding = isAnswer ? 'padding' : 'noSidePadding'
-		const statedBy = isAnswer ? 'answered by' : 'asked by'
 		return (
 			<div className={'qa-body'}>
 				{isAnswer && <div className={'counter'}>
 					<span>+</span>
-					<span>{counter}</span>
+					<span>{qa.votes}</span>
 					<span>-</span>
 				</div>}
 				<div className={'column'}>
 					<div className={`details ${padding}`}>
 						<div className={'column'}>
 							<div className={`message`}>
-								<ReactMarkdown source={message}
+								<ReactMarkdown source={isAnswer ? qa.answer : qa.explanation}
 								               renderers={{
 									               code: CodeBlock}}/>
 							</div>
 						</div>
 						<div className={'author'}>
-							<div><span>{statedBy}</span> {author}</div>
-							<span>{timestamp}</span>
+							<div><span>{isAnswer ? 'answered by' : 'asked by'}</span> {isAnswer ? qa.answeredBy : qa.askedBy}</div>
+							<span>{qa.timestamp}</span>
 						</div>
 					</div>
 					<div className={'question-footer'}>
@@ -54,11 +50,11 @@ export default class QAComponent extends React.Component<Props, State> {
 					</div>
 					{this.state.isCommenting &&
 					[<textarea id={'textArea'} key={'textArea'} className={'text-area'}
-					           value={this.state.t}
-					           onChange={(e) => this.setState({t: e.target.value})}/>,
+					           value={this.state.txt}
+					           onChange={(e) => this.setState({txt: e.target.value})}/>,
 						<ReactMarkdown key={'preview'} source={`${"```"}\n/* Live Preview, supports markdown and code blocks */ \n${"```"}`} renderers={{code: CodeBlock}}/>,
 						<ReactMarkdown key={'markdown'}
-							source={this.state.t}
+							source={this.state.txt}
 							renderers={{code: CodeBlock}}/>]}
 					<div className={'separator'}/>
 				</div>

@@ -1,3 +1,25 @@
 .cellBody {
+    margin:  30px 20px;
+    text-align: left;
+}
 
+.cellBody span {
+    color: #4074D2;
+}
+
+.cellBody span:hover {
+    text-decoration: #4074D2;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+.tag-wrapper {
+    padding: 10px 0;
+    display: flex;
+}
+
+.separator {
+    height: 1px;
+    background-color: lightgray;
+    margin-top: 10px;
 }

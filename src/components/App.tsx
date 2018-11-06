@@ -35,7 +35,7 @@ class App extends React.Component<{}, State> {
 			}
 			case Route.home: {
 				return (
-					<div style={{width: '100%'}} onClick={() => this.setState({selection: Route.question})}>
+					<div style={{width: '100%'}}>
 						{QuestionList.map(q => {
 							return (<QuestionCell key={q._id} question={q} selected={(q) => this.setState({selection: Route.question, selectedQuestion: q})}/>)
 						})}

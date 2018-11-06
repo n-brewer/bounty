@@ -35,13 +35,15 @@ export default class Question extends React.Component<Props, {}> {
 							{this.tags(question.tags)}
 						</div>
 						<div className={'separator'}/>
-						<QAComponent timestamp={question.timestamp} message={question.explanation} counter={question.votes} isAnswer={false} author={question.askedBy}/>
+						<QAComponent qa={question}
+						             isAnswer={false}/>
 					</div>
 				</div>
 				<div className={'answers'}>
 					{AnswerList.map(a => {
-						return (<QAComponent timestamp={a.timestamp} key={a._id} counter={a.votes} message={a.answer} isAnswer={true}
-						                     author={a.answeredBy}/>)
+						return (<QAComponent qa={a}
+						                     key={a._id}
+						                     isAnswer={true}/>)
 					})}
 				</div>
 			</div>
